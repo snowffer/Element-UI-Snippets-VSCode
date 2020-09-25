@@ -1,0 +1,96 @@
+{
+    "Notice: Message": {
+        "prefix": "elme",
+        "body": [
+            "this.\\$message({",
+                "\tmessage: '$1',",
+                "\ttype: '${2|info,success,warning,error|}',",
+                "\tshowClose: ${3:true},",
+            "});",
+            "${4}"
+        ],
+        "description": "Element UI $message"
+    },
+
+    "Notice: Messagebox": {
+        "prefix": "elmebox",
+        "body": [
+            "this.\\$msgbox({",
+                "\ttitle: '$1',",
+                "\tmessage: '${2}',",
+                "\tshowCancelButton: true,",
+                "\tconfirmButtonText: '${3:确定}',",
+                "\tcancelButtonText: '${4:取消}',",
+                "\tbeforeClose: (action, instance, done) => {",
+                    "\t\t${5}",
+                "\t}).then(action => {",
+                    "\t\t${6}",
+                "\t});",
+            "});",
+            "${7}"
+        ],
+        "description": "Element UI $msgbox"
+    },
+
+    "Notice: Messagebox Alert": {
+        "prefix": "elmeal",
+        "body": [
+            "this.\\$alert('${1:内容}', '${2:标题}', {",
+                "\tconfirmButtonText: '${3:确定}',",
+                "\tcallback: action => {",
+                    "\t\t${4}",
+                "\t}",
+            "});",
+            "${5}"
+        ],
+        "description": "Element UI $alert"
+    },
+
+    "Notice: Messagebox Confirm": {
+        "prefix": "elmecon",
+        "body": [
+            "this.\\$confirm('${1:内容}', '${2:标题}', {",
+                "\tconfirmButtonText: '${3:确定}',",
+                "\tcancelButtonText: '${4:取消}',",
+                "\ttype: '${5:|success,info,warning,erro|}',",
+                "\tcallback: action => {",
+                    "\t\t${6}",
+                "\t}",
+            "});",
+            "${7}"
+        ],
+        "description": "Element UI $confirm"
+    },
+
+    "Notice: Messagebox Prompt": {
+        "prefix": "elmepro",
+        "body": [
+            "this.\\$prompt('${1:内容}', '${2:标题}', {",
+                "\tconfirmButtonText: '${3:确定}',",
+                "\tcancelButtonText: '${4:取消}',",
+                "\tinputPattern: '${5}',",
+                    "\tinputErrorMessage: '${6}',",
+                "\tcallback: action => {",
+                    "\t\t${7}",
+                "\t}",
+            "});",
+            "${8}"
+        ],
+        "description": "Element UI $prompt"
+    },
+
+    "Notice: Notification": {
+        "prefix": "elnoti",
+        "body": [
+            "this.\\$notify({",
+                "\ttitle: '${1}',",
+                "\tmessage: '${2}',",
+                "\ttype: '${3:|info,success,warning,error|}',",
+                "\tduration: '${4:|4500, 0|}',",
+                "\tposition: '${5:|top-right,top-left,bottom-right,bottom-left|}'",
+            "});",
+            "${6}"
+        ],
+        "description": "Element UI $notify"
+    }
+}
