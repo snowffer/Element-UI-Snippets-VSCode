@@ -2,11 +2,11 @@
     "Basic: Layout el-row": {
         "prefix": "elrow",
         "body": [
-            "<el-row>",
-                "\t<el-col :span=\"${1:12}\">${3}</el-col>",
-                "\t<el-col :span=\"${2:12}\">${4}</el-col>",
+            "<el-row :gutter=\"${1:20}\">",
+                "\t<el-col :span=\"${2:12}\" :offset=\"${3:0}\">${4}</el-col>",
+                "\t<el-col :span=\"${5:12}\" :offset=\"${6:0}\">${7}</el-col>",
             "</el-row>",
-            "${5}"
+            "${8}"
         ],
         "description": "Element UI <el-row> with <el-col>"
     },
@@ -14,29 +14,42 @@
     "Basic: Layout el-col": {
         "prefix": "elcol",
         "body": [
-            "<el-col :span=\"${1}\">${2}</el-col>",
-            "${3}"
+            "<el-col :span=\"${1}\" :offset=\"${2:0}\">${3}</el-col>",
+            "${4}"
         ],
         "description": "Element UI <el-col>"
+    },
+
+    "Basic: Layout hidden class": {
+        "prefix": "elhc",
+        "body": [
+            "${1|hidden-xs-only,hidden-sm-only,hidden-sm-and-down,hidden-sm-and-up,hidden-md-only,hidden-md-and-down,hidden-md-and-up,hidden-lg-only,hidden-lg-and-down,hidden-lg-and-up,hidden-xl-only|}"
+        ],
+        "description": "Element UI hidden class"
     },
 
     "Basic: Container el-container": {
         "prefix": "elcon",
         "body": [
-            "<el-container>",
-                "\t<el-aside width=\"${1:200px}\">",
-                    "\t\t${2:<!-- Aside content -->}",
-                "\t</el-aside>",
-                "\t<el-container>",
-                    "\t\t<el-header height=\"$3\">",
-                        "\t\t\t${4:<!-- Header content -->}",
-                    "\t\t</el-header>",
-                    "\t\t<el-main height=\"$5\">",
-                        "\t\t\t${6:<!-- Main content -->}",
-                    "\t\t</el-main>",
+            "<el-container :direction=\"${1:vertical}\">",
+                "\t<el-header height=\"$2\">",
+                    "\t\t${3:<!-- Header content -->}",
+                "\t</el-header>",
+                "\t<el-container :direction=\"${4:horizontal}\">",
+                    "\t\t<el-aside width=\"${5:200px}\">",
+                        "\t\t\t${6:<!-- Aside content -->}",
+                    "\t\t</el-aside>",
+                    "\t\t<el-container :direction=\"${7:vertical}\">",
+                        "\t\t\t<el-main height=\"$8\">",
+                            "\t\t\t\t${9:<!-- Main content -->}",
+                        "\t\t\t</el-main>",
+                        "\t\t\t<el-footer height=\"$10\">",
+                            "\t\t\t\t${11:<!-- Footer content -->}",
+                        "\t\t\t</el-footer>",
+                    "\t\t</el-container>",
                 "\t</el-container>",
             "</el-container>",
-            "${7}"
+            "${12}"
         ],
         "description": "Element UI <el-container>"
     },
@@ -115,17 +128,98 @@
         "description": "Element UI Color Waring"
     },
 
+    "Basic: Color primary text": {
+        "prefix": "elcpt",
+        "body": ["#303133"],
+        "description": "Element UI Color Primary Text"
+    },
+
+    "Basic: Color regular text": {
+        "prefix": "elcrt",
+        "body": ["#606266"],
+        "description": "Element UI Color Regular Text"
+    },
+
+    "Basic: Color secondary text": {
+        "prefix": "elcst",
+        "body": ["#909399"],
+        "description": "Element UI Color Secondary Text"
+    },
+
+    "Basic: Color placeholder text": {
+        "prefix": "elcht",
+        "body": ["#C0C4CC"],
+        "description": "Element UI Color Placeholder Text"
+    },
+
+    "Basic: Color Base Border": {
+        "prefix": "elcbb",
+        "body": ["#DCDFE6"],
+        "description": "Element UI Color Base Border"
+    },
+
+    "Basic: Color Light Border": {
+        "prefix": "elclb",
+        "body": ["#E4E7ED"],
+        "description": "Element UI Color Light Border"
+    },
+
+    "Basic: Color Lighter Border": {
+        "prefix": "elclrb",
+        "body": ["#EBEEF5"],
+        "description": "Element UI Color Lighter Border"
+    },
+
+    "Basic: Color Extra Light Border": {
+        "prefix": "elelb",
+        "body": ["#DCDFE6"],
+        "description": "Element UI Color Extra Light Border"
+    },
+
     "Basic: Typography": {
         "prefix": "eltypo",
         "body": ["font-family: \"Helvetica Neue\",Helvetica,\"PingFang SC\",\"Hiragino Sans GB\",\"Microsoft YaHei\",\"微软雅黑\",Arial,sans-serif;"],
         "description": "Element UI Font-family"
     },
 
-    "Basic: el-button": {
+    "Basic: Border Basic Shadow": {
+        "prefix": "elbbs",
+        "body": ["box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);"],
+        "description": "Element UI Border Basic Shadow"
+    },
+
+    "Basic: Border Light Shadow": {
+        "prefix": "elbls",
+        "body": ["box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);"],
+        "description": "Element UI Border Light Shadow"
+    },
+
+    "Basic: Button": {
         "prefix": "elb",
         "body": [
-            "<el-button type=\"${1|primary,text,info,success,warning,danger|}\" @click=\"$2\"></el-button>",
-            "${3}"
+            "<el-button type=\"${1|primary,text,info,success,warning,danger|}\" size=\"${2|default,medium,small,mini|}\" @click=\"$3\">${4}</el-button>",
+            "${5}"
+        ],
+        "description": "Element UI <el-button>"
+    },
+
+    "Basic: Button Group": {
+        "prefix": "elbg",
+        "body": [
+            "<el-button-group>",
+                "\t<el-button type=\"${1|primary,text,info,success,warning,danger|}\" size=\"${2|default,medium,small,mini|}\" @click=\"$3\">${4}</el-button>",
+                "\t<el-button type=\"${5|primary,text,info,success,warning,danger|}\" size=\"${2|default,medium,small,mini|}\" @click=\"$6\">${7}</el-button>",
+            "</el-button-group>",
+            "${8}"
+        ],
+        "description": "Element UI <el-button-group>"
+    },
+
+    "Basic: Link": {
+        "prefix": "ell",
+        "body": [
+            "<el-link type=\"${1|primary,success,warning,danger,info|}\" :underline=\"${2:false}\" href=\"${3}\" target=\"${4:_blank}\">${5}</el-link>",
+            "${6}"
         ],
         "description": "Element UI <el-button>"
     },
@@ -500,7 +594,7 @@
     "Notice: Messagebox Alert": {
         "prefix": "elmeal",
         "body": [
-            "this.\\$alert('${1:内容}', '${2:标题}', {",
+            "this.\\$alert('${1:内容1}', '${2:标题}', {",
                 "\tconfirmButtonText: '${3:确定}',",
                 "\tcallback: action => {",
                     "\t\t${4}",

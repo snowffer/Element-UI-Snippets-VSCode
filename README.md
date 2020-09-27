@@ -24,26 +24,37 @@ Go to the [git](https://github.com/snowffer/Element-UI-Snippets-VSCode) and down
 3. Totally 71 snippets. Will add more if necessary.
 4. **Only work in .vue file for now.**
 
-
-
 #### Basic Part
+
 |No.|Trigger&nbsp;Key|Element Tag|
 |:------:|:--------------:|:--------|
 |1. | `elrow` | `<el-row>` |
 |2. | `elcol` | `<el-col>` |
-|3. | `elcon` | `<el-container>` |
-|4. | `elas` | `<el-aside>` |
-|5. | `elhe` | `<el-header>` |
-|6. | `elma` | `<el-main>` |
-|7. | `elfo` | `<el-footer>` |
-|8. | `elcb` | `#409EFF` |
-|9. | `elcs` | `#67C23A` |
-|10. | `elcw` | `#E6A23C` |
-|11. | `elcd` | `#F56C6C` |
-|12. | `elci` | `#909399` |
-|13. | `eltypo` | `font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;` |
-|14. | `elb` | `el-button` |
-
+|3. | `elhc` | `hidden-xs-only,hidden-sm-only,etc` |
+|4. | `elcon` | `<el-container>` |
+|5. | `elas` | `<el-aside>` |
+|6. | `elhe` | `<el-header>` |
+|7. | `elma` | `<el-main>` |
+|8. | `elfo` | `<el-footer>` |
+|9. | `elcb` | `#409EFF` |
+|10. | `elcs` | `#67C23A` |
+|11. | `elcw` | `#E6A23C` |
+|12. | `elcd` | `#F56C6C` |
+|13. | `elci` | `#909399` |
+|14. | `elcpt` | `#303133` |
+|15. | `elcrt` | `#606266` |
+|16. | `elcst` | `#909399` |
+|17. | `elcht` | `#C0C4CC` |
+|18. | `elcbb` | `#DCDFE6` |
+|19. | `elclb` | `#E4E7ED` |
+|20. | `elclrb` | `#EBEEF5` |
+|21. | `elelb` | `#DCDFE6` |
+|22. | `eltypo` | `font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;` |
+|23. | `elbbs` | `box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)` |
+|24. | `elbls` | `box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1)` |
+|25. | `elb` | `el-button` |
+|26. | `elbg` | `el-button-group` |
+|27. | `ell` | `el-link` |
 
 #### Form Part
 
