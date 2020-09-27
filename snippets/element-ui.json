@@ -227,8 +227,8 @@
     "Form: Radio": {
         "prefix": "elr",
         "body": [
-            "<el-radio v-model=\"${1}\" label=\"${2}\">$3</el-radio>",
-            "${4}"
+            "<el-radio v-model=\"${1}\" label=\"${2}\" @change=\"${3}\">${4}</el-radio>",
+            "${5}"
         ],
         "description": "Element UI <el-radio>"
     },
@@ -236,21 +236,44 @@
     "Form: Radio Group": {
         "prefix": "elrg",
         "body": [
-            "<el-radio-group v-model=\"$1\">",
-                "\t<el-radio v-for=\"${2:item} in ${3:items}\" :key=\"${2:item}.${4:key}\" :label=\"${2:item}.${5:label}\">",
-                    "\t\t{{${2:item}.${6:title}}}",
+            "<el-radio-group v-model=\"$1\" @change=\"$2\">",
+                "\t<el-radio v-for=\"${3:item} in ${4:items}\" :key=\"${3:item}.${5:key}\" :label=\"${3:item}.${6:label}\">",
+                    "\t\t{{${3:item}.${7:title}}}",
                 "\t</el-radio>",
             "</el-radio-group>",
-            "${7}"
+            "${8}"
         ],
         "description": "Element UI <el-radio-group> with <el-radio>"
+    },
+
+    "Form: Radio Button Group": {
+        "prefix": "elrbg",
+        "body": [
+            "<el-radio-group v-model=\"$1\" size=\"${2|normal,medium,small,mini|}\" @change=\"$3\">",
+                "\t<el-radio-button v-for=\"${4:item} in ${5:items}\" :key=\"${4:item}.${6:key}\" :label=\"${4:item}.${7:label}\">",
+                    "\t\t{{${4:item}.${8:title}}}",
+                "\t</el-radio-button>",
+            "</el-radio-group>",
+            "${9}"
+        ],
+        "description": "Element UI <el-radio-group> with <el-radio-button>"
+    },
+
+
+    "Form: Radio Button": {
+        "prefix": "elrb",
+        "body": [
+            "<el-radio-button v-model=\"${1}\" label=\"${2}\">${3}</el-radio-button>",
+            "${4}"
+        ],
+        "description": "Element UI <el-radio>"
     },
 
     "Form: Checkbox": {
         "prefix": "elc",
         "body": [
-            "<el-checkbox v-model=\"${1}\" label=\"${2}\">$3</el-checkbox>",
-            "${4}"
+            "<el-checkbox v-model=\"${1}\" label=\"${2}\" :indeterminate=\"${3:false}\" @change=\"${4}\">{{$5}}</el-checkbox>",
+            "${6}"
         ],
         "description": "Element UI <el-checkbox>"
     },
@@ -258,12 +281,36 @@
     "Form: Checkbox Group": {
         "prefix": "elcg",
         "body": [
-            "<el-checkbox-group v-model=\"$1\">",
-                "\t<el-checkbox v-for=\"${2:item} in ${3:items}\" :key=\"${2:item}.${4:key}\" :label=\"${2:item}.${5:label}\"></el-checkbox>",
+            "<el-checkbox-group v-model=\"$1\" @change=\"${2}\">",
+                "\t<el-checkbox v-for=\"${3:item} in ${4:items}\" :key=\"${3:item}.${5:key}\" :label=\"${3:item}.${6:label}\">",
+                    "\t\t{{${3:item}.${7:label}}}",
+                "\t</el-checkbox>",
             "</el-checkbox-group>",
-            "${6}"
+            "${8}"
         ],
         "description": "Element UI <el-checkbox-group> with <el-checkbox>"
+    },
+
+    "Form: Checkbox Button Group": {
+        "prefix": "elcbg",
+        "body": [
+            "<el-checkbox-group v-model=\"$1\" size=\"${2|normal,medium,small,mini|}\"  @change=\"${3}\">",
+                "\t<el-checkbox-button v-for=\"${4:item} in ${5:items}\" :key=\"${4:item}.${6:key}\" :label=\"${4:item}.${7:label}\">",
+                    "\t\t{{${4:item}.${8:label}}}",
+                "\t</el-checkbox-button>",
+            "</el-checkbox-group>",
+            "${9}"
+        ],
+        "description": "Element UI <el-checkbox-group> with <el-checkbox-button>"
+    },
+
+    "Form: Checkbox Button": {
+        "prefix": "elcbt",
+        "body": [
+            "<el-checkbox-button v-model=\"${1}\" label=\"${2}\" :indeterminate=\"${3:false}\" @change=\"${4}\">{{$5}}</el-checkbox-button>",
+            "${6}"
+        ],
+        "description": "Element UI <el-checkbox-button>"
     },
 
     "Form: Input": {
