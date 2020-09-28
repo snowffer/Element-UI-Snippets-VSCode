@@ -316,8 +316,8 @@
     "Form: Input": {
         "prefix": "eli",
         "body": [
-            "<el-input v-model=\"$1\" placeholder=\"$2\"></el-input>",
-            "${3}"
+            "<el-input v-model=\"$1\" placeholder=\"$2\" size=\"${3|normal,medium,small,mini|}\" clearable @change=\"$4\">$5</el-input>",
+            "${6}"
         ],
         "description": "Element UI <el-input>"
     },
@@ -325,17 +325,40 @@
     "Form: Textarea": {
         "prefix": "elit",
         "body": [
-            "<el-input type=\"textarea\" :rows=\"${1:2}\" v-model=\"$2\" placeholder=\"$3\"></el-input>",
-            "${4}"
+            "<el-input type=\"${1|text,textarea|}\" :rows=\"${2:2}\" v-model=\"$3\" placeholder=\"$4\" ",
+                "\t:maxlength=\"${5:-1}\" :show-word-limit=\"${6|false,true|}\" :autosize=\"{ minRows: ${7:2}, maxRows: ${8:4} }\">",
+            "</el-input>",
+            "${9}"
         ],
-        "description": "Element UI <el-input type=\"textarea\">"
+        "description": "Element UI <el-input type=\"text,textarea\">"
+    },
+
+    "Form: Autocomplete": {
+        "prefix": "ela",
+        "body": [
+            "<el-autocomplete v-model=\"$1\" value-key=\"$2\" placeholder=\"${3}\" clearable",
+                "\t:debounce=\"$4\" :fetch-suggestions=\"${5}\"  @select=\"$6\">$7</el-autocomplete>",
+            "${8}"
+        ],
+        "description": "Element UI <el-autocomplete>"
+    },
+
+    "Form: Input Slot": {
+        "prefix": "elis",
+        "body": [
+            "<template slot=\"${1|prefix,suffix,prepend,append|}\">$2</template>",
+            "${3}"
+        ],
+        "description": "Element UI <template slot=''>"
     },
 
     "Form: InputNumber": {
         "prefix": "elin",
         "body": [
-            "<el-input-number v-model=\"$1\" :min=\"${2:1}\" :max=\"${3:10}\" label=\"$4\"></el-input-number>",
-            "${5}"
+            "<el-input-number v-model=\"$1\" size=\"${2|normal,medium,small,mini|}\" label=\"$3\"",
+                "\t:min=\"${4:1}\" :max=\"${5:10}\" :step=\"${6:1}\" :controls=\"${7|true,false|}\" controls-position=\"${8|both,right|}\" @change=\"$9\">",
+            "</el-input-number>",
+            "${10}"
         ],
         "description": "Element UI <el-input-number>"
     },
@@ -343,14 +366,30 @@
     "Form: Select": {
         "prefix": "elsel",
         "body": [
-            "<el-select v-model=\"$1\" placeholder=\"$2\">",
-                "\t<el-option v-for=\"${3:item} in ${4:options}\"",
-                    "\t\t:key=\"${3:item}.${5:value}\"",
-                    "\t\t:label=\"${3:item}.${6:label}\"",
-                    "\t\t:value=\"${3:item}.${5:value}\">",
+            "<el-select v-model=\"$1\" value-key=\"$2\" placeholder=\"$3\" clearable filterable @change=\"$4\">",
+                "\t<el-option v-for=\"${5:item} in ${6:options}\"",
+                    "\t\t:key=\"${5:item}.${7:value}\"",
+                    "\t\t:label=\"${5:item}.${8:label}\"",
+                    "\t\t:value=\"${5:item}.${9:value}\">",
                 "\t</el-option>",
             "</el-select>",
-            "${7}"
+            "${10}"
+        ],
+        "description": "Element UI <el-select>"
+    },
+
+    "Form: Select Remote Search": {
+        "prefix": "elselr",
+        "body": [
+            "<el-select v-model=\"$1\" value-key=\"$2\" placeholder=\"$3\" clearable filterable",
+                "\tremote reserve-keyword :remote-method=\"$4\" :loading=\"$5\" @change=\"$6\">",
+                "\t<el-option v-for=\"${7:item} in ${8:options}\"",
+                    "\t\t:key=\"${7:item}.${9:value}\"",
+                    "\t\t:label=\"${7:item}.${10:label}\"",
+                    "\t\t:value=\"${7:item}.${11:value}\">",
+                "\t</el-option>",
+            "</el-select>",
+            "${12}"
         ],
         "description": "Element UI <el-select>"
     },
@@ -358,62 +397,155 @@
     "Form: Select Option": {
         "prefix": "elop",
         "body": [
-            "<el-option :label=\"$1\" :value=\"$2\"></el-option>",
+            "<el-option :key=\"$1\" :label=\"$2\" :value=\"$3\"></el-option>",
             "${3}"
         ],
         "description": "Element UI <el-option>"
     },
 
+    "Form: Select Option Group": {
+        "prefix": "elopg",
+        "body": [
+            "<el-option-group v-for=\"${1:group} in ${2:options}\"",
+                "\t:key=\"${1:group}.${3:value}\"",
+                "\t:label=\"${1:group}.${4:label}\">",
+                "\t<el-option v-for=\"${5:item} in ${1:group}.${6:options}\"",
+                    "\t\t:key=\"${5:item}.${7:value}\"",
+                    "\t\t:label=\"${5:item}.${8:label}\"",
+                    "\t\t:value=\"${5:item}.${9:value}\">",
+                "\t</el-option>",
+            "<el-option-group>",
+            "${10}"
+        ],
+        "description": "Element UI <el-option-group>"
+    },
+
     "Form: Cascader": {
         "prefix": "elca",
         "body": [
-            "<el-cascader :options=\"${1:options}\" v-model=\"${2:selectedOptions}\" @change=\"${3:handleChange}\">",
+            "<el-cascader :options=\"${1:options}\" v-model=\"${2}\" clearable filterable :show-all-levels=\"${3|false,true|}\"",
+                "\t:props=\"{ expandTrigger: ${4|'hover','click'|}, multiple: ${5|true,false|}, checkStrictly: ${6|true,false|} }\" @change=\"${7}\">",
             "</el-cascader>",
-            "${4}"
+            "${8}"
         ],
         "description": "Element UI <el-cascader>"
+    },
+
+    "Form: Cascader Panel": {
+        "prefix": "elcap",
+        "body": [
+            "<el-cascader :options=\"${1:options}\" v-model=\"${2}\" @change=\"${3}\"",
+                "\t:props=\"{ expandTrigger: ${4|'hover','click'|}, multiple: ${5|true,false|}, checkStrictly: ${6|true,false|} }\">",
+            "</el-cascader>",
+            "${7}"
+        ],
+        "description": "Element UI <el-cascader-panel>"
     },
 
     "Form: Switch": {
         "prefix": "elsw",
         "body": [
-            "<el-switch v-model=\"$1\" active-text=\"$2\" inactive-text=\"$3\">",
+            "<el-switch v-model=\"$1\" :active-value=\"${2:true}\" :inactive-value=\"${3:false}\" @change=\"$4\">",
             "</el-switch>",
-            "${4}"
+            "${5}"
         ],
         "description": "Element UI <el-switch>"
+    },
+
+    "Form: Slider": {
+        "prefix": "elsl",
+        "body": [
+            "<el-slider v-model=\"$1\" :min=\"$2\" :max=\"$3\" :step=\"$4\" vertical=\"${5:false}\" @change=\"$6\">",
+            "</el-slider>",
+            "${7}"
+        ],
+        "description": "Element UI <el-slider>"
+    },
+
+    "Form: Time Select": {
+        "prefix": "elts",
+        "body": [
+            "<el-time-select v-model=\"$1\" size=\"${2|normal,medium,small,mini|}\" placeholder=\"$3\"",
+                "\t:picker-options=\"{",
+                    "\t\tstart: '${4}',",
+                    "\t\tstep: '${5:00:30}',",
+                    "\t\tend: '${6}',",
+                "\t}\"",
+                "\tchange=\"${7}\">",
+            "</el-time-select>",
+            "${8}"
+        ],
+        "description": "Element UI <el-time-select>"
+    },
+
+    "Form: Time Select Range": {
+        "prefix": "eltsr",
+        "body": [
+            "<el-time-select v-model=\"$1\" size=\"${2|normal,medium,small,mini|}\" placeholder=\"$3\"",
+                "\t:picker-options=\"{",
+                    "\t\tstart: '${4}',",
+                    "\t\tstep: '${5:00:30}',",
+                    "\t\tend: '${6}',",
+                "\t}\">",
+            "</el-time-select>",
+            "<el-time-select v-model=\"$7\" size=\"${2|normal,medium,small,mini|}\" placeholder=\"$8\"",
+                "\t:picker-options=\"{",
+                    "\t\tstart: '${4}',",
+                    "\t\tstep: '${5:00:30}',",
+                    "\t\tend: '${6}',",
+                    "\t\tminTime: $1",
+                "\t}\">",
+            "</el-time-select>",
+            "${9}"
+        ],
+        "description": "Element UI <el-time-select> range"
     },
 
     "Form: TimePicker": {
         "prefix": "eltp",
         "body": [
-            "<el-time-picker v-model=\"$1\"",
+            "<el-time-picker v-model=\"$1\" size=\"${2|normal,medium,small,mini|}\" arrow-control",
                 "\t:picker-options=\"{",
-                    "\t\tselectableRange: '${2:18:30:00} - ${3:20:30:00}'",
+                    "\t\tselectableRange: '${3:18:30:00} - ${4:20:30:00}'",
                 "\t}\"",
-                "\tplaceholder=\"${4:任意时间点}\">",
+                "\tplaceholder=\"${5:任意时间点}\">",
             "</el-time-picker>",
-            "${5}"
+            "${6}"
         ],
         "description": "Element UI <el-time-picker>"
     },
 
-    "Form: TimeSelector": {
-        "prefix": "elts",
+    "Form: TimePicker Range": {
+        "prefix": "eltpr",
         "body": [
-            "<el-time-select v-model=\"$1\" :picker-options=\"$2\" placeholder=\"${3:选择时间}\">",
-            "</el-time-select>",
-            "${4}"
+            "<el-time-picker v-model=\"$1\" size=\"${2|normal,medium,small,mini|}\" arrow-control",
+                "\tis-range range-separator=\"${3:-}\" start-placeholder=\"$4\" end-placeholder=\"$5\"",
+                "\t:picker-options=\"{",
+                    "\t\tselectableRange: '${6:18:30:00} - ${7:20:30:00}'",
+                "\t}\">",
+            "</el-time-picker>",
+            "${8}"
         ],
-        "description": "Element UI <el-time-select>"
+        "description": "Element UI <el-time-picker is-range>"
     },
 
     "Form: DatePicker": {
         "prefix": "eldp",
         "body": [
-            "<el-date-picker v-model=\"$1\" type=\"date\" placeholder=\"${2:选择日期时间}\">",
+            "<el-date-picker v-model=\"$1\" type=\"${2|year,month,date,dates,week|}\" size=\"${3|normal,medium,small,mini|}\" placeholder=\"${4:选择日期时间}\">",
             "</el-date-picker>",
-            "${3}"
+            "${5}"
+        ],
+        "description": "Element UI <el-date-picker>"
+    },
+
+    "Form: DatePicker Range": {
+        "prefix": "eldpr",
+        "body": [
+            "<el-date-picker v-model=\"$1\" type=\"${2|daterange,monthrange|}\" size=\"${3|normal,medium,small,mini|}\"",
+                "\trange-separator=\"${4:-}\" start-placeholder=\"$5\" end-placeholder=\"$6\">",
+            "</el-date-picker>",
+            "${7}"
         ],
         "description": "Element UI <el-date-picker>"
     },
@@ -421,9 +553,20 @@
     "Form: DateTimePicker": {
         "prefix": "eldtp",
         "body": [
-            "<el-date-picker type=\"datetime\" v-model=\"$1\" placeholder=\"${2:选择日期时间}\">",
+            "<el-date-picker v-model=\"$1\" type=\"datetime\" size=\"${2|normal,medium,small,mini|}\" placeholder=\"${3:选择日期时间}\">",
             "</el-date-picker>",
-            "${3}"
+            "${4}"
+        ],
+        "description": "Element UI <el-date-picker type=\"datetime\">"
+    },
+
+    "Form: DateTimePicker Range": {
+        "prefix": "eldtpr",
+        "body": [
+            "<el-date-picker v-model=\"$1\" type=\"datetimerange\" size=\"${2|normal,medium,small,mini|}\"",
+                "\trange-separator=\"${3:-}\" start-placeholder=\"$4\" end-placeholder=\"$5\">",
+            "</el-date-picker>",
+            "${6}"
         ],
         "description": "Element UI <el-date-picker type=\"datetime\">"
     },
@@ -433,15 +576,18 @@
         "body": [
             "<el-upload",
                 "\taction=\"$1\"",
-                "\t:on-remove=\"$2\"",
+                "\tref=\"${2:upload}\"",
+                "\t:on-remove=\"$3\"",
+                "\t:auto-upload=\"false\"",
                 "\tmultiple",
-                "\t:limit=\"${3:5}\"",
-                "\t:on-exceed=\"$4\"",
-                "\t:file-list=\"$5\">",
-                "\t<el-button size=\"small\" type=\"primary\">${6:点击上传}</el-button>",
-                "\t<div slot=\"tip\" class=\"el-upload__tip\">${7:只能上传jpg/png文件，且不超过500kb}</div>",
+                "\t:limit=\"${4:5}\"",
+                "\t:on-exceed=\"$5\"",
+                "\t:file-list=\"$6\">",
+                "\t<el-button slot=\"trigger\" size=\"small\" type=\"primary\">${7:select file}</el-button>",
+                "\t<el-button style=\"margin-left: 10px;\" size=\"small\" type=\"success\" @click=\"$8\">${9:upload to server}</el-button>",
+                "\t<div slot=\"tip\" class=\"el-upload__tip\">${10:jpg/png files with a size less than 500kb}</div>",
             "</el-upload>",
-            "${8}"
+            "${11}"
         ],
         "description": "Element UI <el-upload>"
     },
@@ -449,8 +595,8 @@
     "Form: Rate": {
         "prefix": "elra",
         "body": [
-            "<el-rate v-model=\"$1\"></el-rate>",
-            "${2}"
+            "<el-rate v-model=\"$1\" :allow-half=\"${2|false,true|}\" @change=\"$3\"></el-rate>",
+            "${4}"
         ],
         "description": "Element UI <el-rate>"
     },
@@ -458,8 +604,8 @@
     "Form: ColorPicker": {
         "prefix": "elcp",
         "body": [
-            "<el-color-picker v-model=\"$1\"></el-color-picker>",
-            "${2}"
+            "<el-color-picker v-model=\"$1\" size=\"${2|normal,medium,small,mini|}\" :show-alpha=\"${3|true,false|}\" ></el-color-picker>",
+            "${4}"
         ],
         "description": "Element UI <el-color-picker>"
     },
@@ -467,8 +613,10 @@
     "Form: Transfer": {
         "prefix": "eltr",
         "body": [
-            "<el-transfer v-model=\"$1\" :data=\"$2\"></el-transfer>",
-            "${3}"
+            "<el-transfer v-model=\"$1\" :data=\"$2\" target-order=\"${3|original,push,unshift|}\" filterable @change=\"$4\"",
+                "\t:format=\"{noChecked: '\\${total}',hasChecked: '\\${checked}/\\${total}'}\">",
+            "</el-transfer>",
+            "${5}"
         ],
         "description": "Element UI <el-transfer>"
     },
@@ -476,16 +624,16 @@
     "Form: Form": {
         "prefix": "elf",
         "body": [
-            "<el-form :model=\"${1:form}\" ref=\"${1:form}\" label-width=\"80px\">",
-                "\t<el-form-item label=\"$2\">",
-                    "\t\t<el-input v-model=\"${1:form}.${3}\"></el-input>",
+            "<el-form :model=\"${1:form}\" ref=\"${2:form}\" :rules=\"${3:rules}\" label-width=\"80px\" :inline=\"${4|false,true|}\" size=\"${5|normal,medium,small,mini|}\">",
+                "\t<el-form-item label=\"$6\">",
+                    "\t\t<el-input v-model=\"${1:form}.${7}\"></el-input>",
                 "\t</el-form-item>",
                 "\t<el-form-item>",
-                    "\t\t<el-button type=\"primary\" @click=\"onSubmit\">${4:立即创建}</el-button>",
-                    "\t\t<el-button>${5:取消}</el-button>",
+                    "\t\t<el-button type=\"primary\" @click=\"onSubmit\">${8:立即创建}</el-button>",
+                    "\t\t<el-button>${9:取消}</el-button>",
                 "\t</el-form-item>",
             "</el-form>",
-            "${6}"
+            "${10}"
         ],
         "description": "Element UI <el-form>"
     },
@@ -493,10 +641,10 @@
     "Form: Form Item": {
         "prefix": "elfi",
         "body": [
-            "<el-form-item label=\"$1\">",
-                "\t$2",
+            "<el-form-item label=\"$1\" size=\"${2|normal,medium,small,mini|}\">",
+                "\t$3",
             "</el-form-item>",
-            "${3}"
+            "${4}"
         ],
         "description": "Element UI <el-form-item>"
     },
