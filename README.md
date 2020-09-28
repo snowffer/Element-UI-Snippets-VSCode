@@ -62,26 +62,39 @@ Go to the [git](https://github.com/snowffer/Element-UI-Snippets-VSCode) and down
 |:------:|:--------------:|:--------|
 |1. | `elr` | `<el-radio>` |
 |2. | `elrg` | `<el-radio-group>` |
-|3. | `elc` | `<el-checkbox>` |
-|4. | `elcg` | `<el-checkbox-group>` |
-|5. | `eli` | `<el-input>` |
-|6. | `elit` | `<el-input type="textarea">` |
-|7. | `elin` | `<el-input-number>` |
-|8. | `elsel` | `<el-select>` |
-|9. | `elop` | `<el-option>` |
-|10. | `elca` | `<el-cascader>` |
-|11. | `elsw` | `<el-swtich>` |
-|12. | `elsl` | `<el-slider>` |
-|13. | `eltp` | `<el-time-picker>` |
-|14. | `elts` | `<el-time-select>` |
-|15. | `eldp` | `<el-date-picker>` |
-|16. | `eldtp` | `<el-date-picker type="datetime">` |
-|17. | `elu` | `<el-upload>` |
-|18. | `elra` | `<el-rate>` |
-|19. | `elcp` | `<el-color-picker>` |
-|20. | `eltr` | `<el-transfer>` |
-|21. | `elf` | `<el-form>` |
-|22. | `elfi` | `<el-form-item>` |
+|3. | `elrbg` | `<el-radio-group> with <el-radio-button>` |
+|4. | `elrb` | `<el-radio-button>` |
+|5. | `elc` | `<el-checkbox>` |
+|6. | `elcg` | `<el-checkbox-group>` |
+|7. | `elcbg` | `<el-checkbox-group> with <el-checkbox-button>` |
+|8. | `elcbt` | `<el-checkbox-button>` |
+|9. | `eli` | `<el-input>` |
+|10. | `elit` | `<el-input type="textarea">` |
+|11. | `ela` | `<el-autocomplete>` |
+|12. | `elis` | `<template slot=''>` |
+|13. | `elin` | `<el-input-number>` |
+|14. | `elsel` | `<el-select>` |
+|15. | `elselr` | `<el-select remote>` |
+|16. | `elop` | `<el-option>` |
+|17. | `elopg` | `<el-option-group>` |
+|18. | `elca` | `<el-cascader>` |
+|19. | `elcap` | `<el-cascader-panel>` |
+|20. | `elsw` | `<el-swtich>` |
+|21. | `elsl` | `<el-slider>` |
+|22. | `eltp` | `<el-time-picker>` |
+|23. | `elts` | `<el-time-select>` |
+|24. | `eltsr` | `<el-time-select> * 2` |
+|25. | `eltpr` | `<el-time-picker is-range>` |
+|26. | `eldp` | `<el-date-picker>` |
+|27. | `eldpr` | `<el-date-picker type="daterange,monthrange">` |
+|28. | `eldtp` | `<el-date-picker type="datetime">` |
+|29. | `eldtpr` | `<el-date-picker type="datetimerange">` |
+|30. | `elu` | `<el-upload>` |
+|31. | `elra` | `<el-rate>` |
+|32. | `elcp` | `<el-color-picker>` |
+|33. | `eltr` | `<el-transfer>` |
+|34. | `elf` | `<el-form>` |
+|35. | `elfi` | `<el-form-item>` |
 
 
 #### Data Part
