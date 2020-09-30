@@ -96,37 +96,35 @@ Go to the [git](https://github.com/snowffer/Element-UI-Snippets-VSCode) and down
 |34. | `elf` | `<el-form>` |
 |35. | `elfi` | `<el-form-item>` |
 
-
 #### Data Part
 
 |No. |  Trigger Key | Element Tag|
 |:------:|:--------------:|:--------|
-|1. | `elta` | `<el-table>` |
-|2. | `eltac` | `<el-table-column>` |
-|3. | `eltag` | `<el-tag>` |
+|1. | `elt` | `<el-table>` |
+|2. | `eltc` | `<el-table-column>` |
+|3. | `elta` | `<el-tag>` |
 |4. | `elpr` | `<el-progress>` |
-|5. | `elprc` | `<el-progress type="circle">` |
-|6. | `eltree` | `<el-tree>` |
-|7. | `elpa` | `<el-pagination>` |
-|8. | `elba` | `<el-badge>` |
-
+|5. | `eltree` | `<el-tree>` |
+|6. | `elp` | `<el-pagination>` |
+|7. | `elba` | `<el-badge>` |
+|8. | `elav` | `<el-avatar>` |
 
 #### Notice Part
 
 |No. |  Trigger Key | Element Tag|
 |:------:|:--------------:|:--------|
 |1. | `elal` | `<el-alert>` |
-|2. | `elloads` | 	`element-loading-*` |
-|3. | `elme` | 	`this.$message({})` |
-|4. | `elmebox` | 	`this.$msgbox({})` |
-|5. | `elmeal` | 	`this.$alert({})` |
-|6. | `elmecon` | 	`this.$confirm({})` |
-|7. | `elmepro` | 	`this.$prompt({})` |
-|8. | `elnoti` | 	`this.$notify({})` |
-
-
+|2. | `elloads` | `element-loading-*` |
+|3. | `elme` | `this.$message({})` |
+|4. | `elmebox` | `this.$msgbox({})` |
+|5. | `elmeal` | `this.$alert({})` |
+|6. | `elmecon` | `this.$confirm({})` |
+|7. | `elmepro` | `this.$prompt({})` |
+|8. | `elno` | `this.$notify({})` |
+|9. | `elnot` | `this.$notify.type({})` |
 
 #### Navigation Part
+
 |No. |  Trigger Key | Element Tag|
 |:------:|:--------------:|:--------|
 |1. | `elmen` | `<el-menu>` |
@@ -142,6 +140,7 @@ Go to the [git](https://github.com/snowffer/Element-UI-Snippets-VSCode) and down
 |11. | `elst` | `<el-step>` |
 
 #### Others Part
+
 |No. |  Trigger Key | Element Tag|
 |:------:|:--------------:|:--------|
 |1. | `eldi` | `<el-dialog>` |

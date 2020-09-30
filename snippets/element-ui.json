@@ -650,7 +650,7 @@
     },
 
     "Data: Table": {
-        "prefix": "elta",
+        "prefix": "elt",
         "body": [
             "<el-table :data=\"$1\" border stripe>",
                 "\t<el-table-column v-for=\"${2:col} in ${3:columns}\"",
@@ -666,7 +666,7 @@
     },
 
     "Data: Table Column": {
-        "prefix": "eltac",
+        "prefix": "eltc",
         "body": [
             "<el-table-column",
                 "\t:prop=\"${1:col}.${2:id}\"",
@@ -679,10 +679,10 @@
     },
 
     "Data: Tag": {
-        "prefix": "eltag",
+        "prefix": "elta",
         "body": [
-            "<el-tag type=\"${1|danger,info,success,warning|}\" closable>$2</el-tag>",
-            "${3}"
+            "<el-tag type=\"${1|danger,info,success,warning|}\" size=\"${2|normal,medium,small,mini|}\"  effect=\"${3|dark,plain|}\" closable @close=\"${4}\">$5</el-tag>",
+            "${6}"
         ],
         "description": "Element UI <el-tag>"
     },
@@ -690,8 +690,8 @@
     "Data: Progress": {
         "prefix": "elpr",
         "body": [
-            "<el-progress type=\"${1|line,circle|}\" :percentage=\"$2\" :status=\"$3\"></el-progress>",
-            "${4}"
+            "<el-progress type=\"${1|line,circle,dashboard|}\" :percentage=\"$2\" status=\"${3|success,exception,warning|}\" :stroke-width=\"${4:6}\"></el-progress>",
+            "${5}"
         ],
         "description": "Element UI <el-progress>"
     },
@@ -699,25 +699,26 @@
     "Data: Tree": {
         "prefix": "eltree",
         "body": [
-            "<el-tree :data=\"$1\" :props=\"$2\" @node-click=\"$3\"></el-tree>",
-            "${4}"
+            "<el-tree ref=\"${1:tree}\" :data=\"$2\" node-key=\"$3\" :props=\"$4\" empty-text=\"$5\" show-checkbox=\"${6|false,true|}\" highlight-current=\"${7|true,false|}\" @node-click=\"$8\">$9</el-tree>",
+            "${10}"
         ],
         "description": "Element UI <el-tree>"
     },
 
     "Data: Pagination": {
-        "prefix": "elpa",
+        "prefix": "elp",
         "body": [
             "<el-pagination",
                 "\t@size-change=\"${1:sizeChange}\"",
                 "\t@current-change=\"${2:currentChange}\"",
-                "\t:current-page=\"${3:currentPage}\"",
+                "\t:current-page.sync=\"${3:currentPage}\"",
                 "\t:page-sizes=\"${4:[20, 40, 80, 100]}\"",
                 "\t:page-size=\"${5:pageSize}\"",
                 "\tlayout=\"total, sizes, prev, pager, next, jumper\"",
                 "\t:total=\"${6:totalNum}\" background>",
+                "\t:pager-count=\"${7:7}\">",
             "</el-pagination>",
-            "${7}"
+            "${8}"
         ],
         "description": "Element UI <el-pagination>"
     },
@@ -725,19 +726,28 @@
     "Data: Badge": {
         "prefix": "elba",
         "body": [
-            "<el-badge :value=\"$1\">",
-                "\t$2",
+            "<el-badge :value=\"${1}\" :max=\"${2:99}\" :is-dot=\"${3|false,true|}\" :hidden=\"${4|false,true|}\" type=\"${5|primary,success,warning,danger,info|}\">",
+                "\t<el-button size=\"small\">$6</el-button>",
             "</el-badge>",
-            "${3}"
+            "${7}"
         ],
         "description": "Element UI <el-badge>"
+    },
+
+    "Data: Avatar": {
+        "prefix": "elav",
+        "body": [
+            "<el-avatar icon=\"el-icon-user-solid\" size=\"${1|large,medium,small|}\" shape=\"${2|circle,square|}\" :src=\"${3}\" fit=\"${4|fill,contain,cover,none,scale-down|}\"></el-avatar>",
+            "${5}"
+        ],
+        "description": "Element UI <el-avatar>"
     },
 
     "Notice: Alert": {
         "prefix": "elal",
         "body": [
-            "<el-alert :title=\"$1\" type=\"${2|info,success,warning,error|}\" show-icon></el-alert>",
-            "${3}"
+            "<el-alert :title=\"$1\" type=\"${2|info,success,warning,error|}\" effect=\"${3|light,dark|}\" show-icon closable></el-alert>",
+            "${4}"
         ],
         "description": "Element UI <el-alert>"
     },
@@ -760,8 +770,9 @@
                 "\tmessage: '$1',",
                 "\ttype: '${2|info,success,warning,error|}',",
                 "\tshowClose: ${3:true},",
+                "\tduration: ${4:3000},",
             "});",
-            "${4}"
+            "${5}"
         ],
         "description": "Element UI $message"
     },
@@ -773,15 +784,18 @@
                 "\ttitle: '$1',",
                 "\tmessage: '${2}',",
                 "\tshowCancelButton: true,",
-                "\tconfirmButtonText: '${3:确定}',",
-                "\tcancelButtonText: '${4:取消}',",
+                "\tconfirmButtonText: '${3:OK}',",
+                "\tcancelButtonText: '${4:Cancel}',",
+                "\tcenter: ${5:false},",
                 "\tbeforeClose: (action, instance, done) => {",
-                    "\t\t${5}",
-                "\t}).then(action => {",
                     "\t\t${6}",
-                "\t});",
+                "\t}",
+            "}).then(action => {",
+                "\t${7}",
+            "}).catch(() => {",
+                "\t${8}",
             "});",
-            "${7}"
+            "${9}"
         ],
         "description": "Element UI $msgbox"
     },
@@ -789,12 +803,12 @@
     "Notice: Messagebox Alert": {
         "prefix": "elmeal",
         "body": [
-            "this.\\$alert('${1:内容1}', '${2:标题}', {",
-                "\tconfirmButtonText: '${3:确定}',",
+            "this.\\$alert('${1:content}', '${2:title}', {",
+                "\tconfirmButtonText: '${3:OK}',",
                 "\tcallback: action => {",
                     "\t\t${4}",
                 "\t}",
-            "});",
+            "})",
             "${5}"
         ],
         "description": "Element UI $alert"
@@ -803,15 +817,16 @@
     "Notice: Messagebox Confirm": {
         "prefix": "elmecon",
         "body": [
-            "this.\\$confirm('${1:内容}', '${2:标题}', {",
-                "\tconfirmButtonText: '${3:确定}',",
-                "\tcancelButtonText: '${4:取消}',",
+            "this.\\$confirm('${1:content}', '${2:title}', {",
+                "\tconfirmButtonText: '${3:OK}',",
+                "\tcancelButtonText: '${4:Cancel}',",
                 "\ttype: '${5|success,info,warning,erro|}',",
-                "\tcallback: action => {",
-                    "\t\t${6}",
-                "\t}",
+            "}).then(action => {",
+                "\t${6}",
+            "}).catch(() => {",
+                "\t${7}",
             "});",
-            "${7}"
+            "${8}"
         ],
         "description": "Element UI $confirm"
     },
@@ -819,33 +834,50 @@
     "Notice: Messagebox Prompt": {
         "prefix": "elmepro",
         "body": [
-            "this\\.$prompt('${1:内容}', '${2:标题}', {",
-                "\tconfirmButtonText: '${3:确定}',",
-                "\tcancelButtonText: '${4:取消}',",
-                "\tinputPattern: '${5}',",
-                    "\tinputErrorMessage: '${6}',",
-                "\tcallback: action => {",
-                    "\t\t${7}",
-                "\t}",
+            "this.\\$prompt('${1:content}', '${2:title}', {",
+                "\tconfirmButtonText: '${3:OK}',",
+                "\tcancelButtonText: '${4:Cancel}',",
+                "\tinputPattern: / ${5} /,",
+                "\tinputErrorMessage: '${6}',",
+            "}).then(({ value }) => {",
+                "\t${7}",
+            "}).catch(() => {",
+                "\t${8}",
             "});",
-            "${8}"
+            "${9}"
         ],
         "description": "Element UI $prompt"
     },
 
     "Notice: Notification": {
-        "prefix": "elnoti",
+        "prefix": "elno",
         "body": [
-            "this\\.$notify({",
-                "\ttitle: '${1}',",
-                "\tmessage: '${2}',",
+            "this.\\$notify({",
+                "\ttitle: '${1:title}',",
+                "\tmessage: '${2:message}',",
                 "\ttype: '${3|info,success,warning,error|}',",
                 "\tduration: '${4|4500, 0|}',",
-                "\tposition: '${5|top-right,top-left,bottom-right,bottom-left|}'",
+                "\tposition: '${5|top-right,top-left,bottom-right,bottom-left|}',",
+                "\tshowClose: '${6:true}',",
             "});",
-            "${6}"
+            "${7}"
         ],
         "description": "Element UI $notify"
+    },
+
+    "Notice: Notification with type": {
+        "prefix": "elnot",
+        "body": [
+            "this.\\$notify.${1|info,success,warning,error|}({",
+                "\ttitle: '${2:title}',",
+                "\tmessage: '${3:message}',",
+                "\tduration: '${4|4500, 0|}',",
+                "\tposition: '${5|top-right,top-left,bottom-right,bottom-left|}',",
+                "\tshowClose: '${6:true}',",
+            "});",
+            "${7}"
+        ],
+        "description": "Element UI $notify.type"
     },
 
     "Navigation: NavMenu Menu": {
