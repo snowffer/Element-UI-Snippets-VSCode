@@ -883,18 +883,19 @@
     "Navigation: NavMenu Menu": {
         "prefix": "elmen",
         "body": [
-            "<el-menu mode=\"${1:horizontal}\" :default-active=\"$2\" @select=\"$3\">",
+            "<el-menu mode=\"${1|horizontal,vertical|}\" default-active=\"$2\" @select=\"$3\">",
                 "\t<el-submenu v-for=\"(${4:submenus}, ${5:index}) in ${6:menus}\"",
                     "\t\t:index=\"${5:index} + 1\"",
-                    "\t\t:key=\"${4:submenus}.${5:key}\">",
-                    "\t\t<template slot=\"title\">${4:submenus}.${6:title}</template>",
-                    "\t\t<el-menu-item v-for=\"(${7:item}, ${8:subIndex}) in ${4:submenus}\"",
-                        "\t\t\t:index=\"(${5:index} + 1) + '-' + (${8:subIndex} + 1)\">",
-                            "\t\t\t\t{{${7:item}.${9:title}}}",
+                    "\t\t:key=\"${4:submenus}.${7:key}\">",
+                    "\t\t<template slot=\"title\">{{${4:submenus}.${8:title}}}</template>",
+                    "\t\t<el-menu-item v-for=\"(${9:item}, ${10:subIndex}) in ${4:submenus}.${11:menus}\"",
+                        "\t\t\t:index=\"(${5:index} + 1) + '-' + (${10:subIndex} + 1)\"",
+                        "\t\t\t:key=\"${9:item}.${12:key}\">",
+                            "\t\t\t\t{{${9:item}.${13:title}}}",
                     "\t\t</el-menu-item>",
                 "\t</el-submenu>",
             "</el-menu>",
-            "${10}"
+            "${14}"
         ],
         "description": "Element UI <el-menu> with <el-submenu> and <el-menu-item>"
     },
@@ -906,8 +907,8 @@
                 "\t<template slot=\"title\">$2</template>",
                 "\t<el-menu-item v-for=\"(${3:item}, ${4:subIndex}) in $5\"",
                     "\t\t:index=\"${4:subIndex} + 1\"",
-                    "\t\t:key=\"${5:item}.${6:key}\">>",
-                        "\t\t\t{{${3:item}.$7}}",
+                    "\t\t:key=\"${3:item}.${6:key}\">",
+                        "\t\t\t{{${3:item}.${7:title}}}",
                 "\t</el-menu-item>",
             "</el-submenu>",
             "${8}"
@@ -918,8 +919,8 @@
     "Navigation: NavMenu Menu Item": {
         "prefix": "elmeni",
         "body": [
-            "<el-menu-item :index=\"$1\">$2</el-menu-item>",
-            "${3}"
+            "<el-menu-item index=\"$1\" key=\"$2\">$3</el-menu-item>",
+            "${4}"
         ],
         "description": "Element UI <el-menu-item>"
     },
@@ -927,16 +928,15 @@
     "Navigation: Tabs": {
         "prefix": "eltabs",
         "body": [
-            "<el-tabs v-model=\"$1\"",
-                "\ttype=\"${2:card}\">",
-                "\t<el-tab-pane v-for=\"${3:item} in items\"",
-                    "\t\t:key=\"${3:item}.${4:key}\"",
-                    "\t\t:label = \"${3:item}.${5:label}\"",
-                    "\t\t:name=\"${3:item}.${6:id}\">",
-                    "\t\t$7",
+            "<el-tabs v-model=\"$1\" type=\"${2|card,border-card,normal|}\" tab-position=\"${3|top,left,right,bottom|}\" @tab-click=\"$4\">",
+                "\t<el-tab-pane v-for=\"${5:item} in ${6:panes}\"",
+                    "\t\t:key=\"${5:item}.${7:key}\"",
+                    "\t\t:label=\"${5:item}.${8:label}\"",
+                    "\t\t:name=\"${5:item}.${7:key}\">",
+                    "\t\t$9",
                 "\t</el-tab-pane>",
             "</el-tabs>",
-            "${8}"
+            "${10}"
         ],
         "description": "Element UI <el-tabs> with <el-tab-pane>"
     },
@@ -973,21 +973,28 @@
         "description": "Element UI <el-breadcrumb-item>"
     },
 
+    "Navigation: PageHeader": {
+        "prefix": "elpa",
+        "body": [
+            "<el-page-header @back=\"$1\" content=\"$2\"></el-page-header>",
+            "${3}"
+        ],
+        "description": "Element UI <el-page-header>"
+    },
+
     "Navigation: Dropdown": {
         "prefix": "eldr",
         "body": [
-            "<el-dropdown trigger=\"${1:click}\" @command=\"$2\">",
-                "\t<span>",
-                    "\t\t<i class=\"el-icon-arrow-down el-icon--right\"></i>",
-                "\t</span>",
+            "<el-dropdown trigger=\"${1:click}\" size=\"${2|default,medium,small,mini|}\" split-button type=\"${3|primary,success,warning,danger,info,text|}\" @command=\"$4\">",
+                "\t${5:title}",
                 "\t<el-dropdown-menu slot=\"dropdown\">",
-                    "\t\t<el-dropdown-item v-for=\"${3:item} in ${4:items}\"",
-                        "\t\t\t:key=\"${3:item}.${5:key}\" :command=\"${3:item}.${6:command}\">",
-                        "\t\t\t{{${3:item}.${7:title}}}",
+                    "\t\t<el-dropdown-item v-for=\"${6:item} in ${7:items}\"",
+                        "\t\t\t:key=\"${6:item}.${8:key}\" :command=\"${6:item}.${9:command}\">",
+                        "\t\t\t{{${6:item}.${10:title}}}",
                     "\t\t</el-dropdown-item>",
                 "\t</el-dropdown-menu>",
             "</el-dropdown>",
-            "${8}"
+            "${11}"
         ],
         "description": "Element UI <el-dropdown> with <el-dropdown-item>"
     },
@@ -1004,15 +1011,15 @@
     "Navigation: Steps": {
         "prefix": "elsts",
         "body": [
-            "<el-steps :active=\"$1\">",
-                "\t<el-step v-for=\"${2:item} in ${3:items}\"",
-                    "\t\t:key=\"${2:item}.${4:key}\"",
-                    "\t\t:title=\"${2:item}.${5:title}\"",
-                    "\t\t:description=\"${2:item}.${6:description}\"",
-                    "\t\t:icon=\"${2:item}.${7:icon}\">",
+            "<el-steps :active=\"$1\" direction=\"${2|horizontal,vertical|}\" process-status=\"${3|wait,process,finish,error,success|}\" finish-status=\"${4|wait,process,finish,error,success|}\">",
+                "\t<el-step v-for=\"${5:item} in ${6:items}\"",
+                    "\t\t:key=\"${5:item}.${7:key}\"",
+                    "\t\t:title=\"${5:item}.${8:title}\"",
+                    "\t\t:description=\"${5:item}.${9:description}\"",
+                    "\t\t:icon=\"${5:item}.${10:icon}\">",
                 "\t</el-step>",
             "</el-steps>",
-            "${8}"
+            "${11}"
         ],
         "description": "Element UI <el-steps> with <el-step>"
     },
@@ -1034,10 +1041,10 @@
                 "\t:visible.sync=\"$2\"",
                 "\twidth=\"${3:30%}\"",
                 "\t@close=\"$4\">",
-                "\t$5",
+                "\t<span>$5</span>",
                 "\t<span slot=\"footer\">",
-                    "\t\t<el-button @click=\"$2 = false\">取 消</el-button>",
-                    "\t\t<el-button type=\"primary\" @click=\"$6\">确 定</el-button>",
+                    "\t\t<el-button @click=\"$2 = false\">Cancel</el-button>",
+                    "\t\t<el-button type=\"primary\" @click=\"$6\">OK</el-button>",
                 "\t</span>",
             "</el-dialog>",
             "${7}"
@@ -1048,7 +1055,7 @@
     "Others: Tooltip": {
         "prefix": "elto",
         "body": [
-            "<el-tooltip content=\"$1\" placement=\"$2\" effect=\"${3:dark}\">",
+            "<el-tooltip content=\"$1\" placement=\"${2|top,top-start,top-end,bottom,bottom-start,bottom-end,left,left-start,left-end,right,right-start,right-end|}\" effect=\"${3|dark,light|}\">",
                 "\t${4:<!-- content to trigger tooltip here -->}",
             "</el-tooltip>",
             "${5}"
@@ -1057,14 +1064,14 @@
     },
 
     "Others: Popover": {
-        "prefix": "elpop",
+        "prefix": "elpo",
         "body": [
             "<el-popover",
                 "\t:ref=\"$1\"",
-                "\tplacement=\"$2\"",
-                "\t:title=\"$3\"",
+                "\tplacement=\"${2|top,top-start,top-end,bottom,bottom-start,bottom-end,left,left-start,left-end,right,right-start,right-end|}\"",
+                "\ttitle=\"$3\"",
                 "\twidth=\"$4\"",
-                "\ttrigger=\"${5:click}\"",
+                "\ttrigger=\"${5|click,focus,hover,manual|}\"",
                 "\tcontent=\"$6\">",
                 "\t${7: <!-- <el-button slot=\"reference\">content</el-button> -->}",
             "</el-popover>",
@@ -1073,16 +1080,35 @@
         "description": "Element UI <el-popover>"
     },
 
+    "Others: Popconfirm": {
+        "prefix": "elpoco",
+        "body": [
+            "<el-popconfirm",
+                "\ttitle=\"$1\"",
+                "\tconfirmButtonText=\"$2\"",
+                "\tcancelButtonText=\"$3\"",
+                "\tconfirmButtonType=\"${4|primary,text,info,success,warning,danger|}\"",
+                "\tcancelButtonType=\"${5|text,primary,info,success,warning,danger|}\"",
+                "\ticon=\"${6:el-icon-question}\"",
+                "\ticonColor=\"${7:#f90}\"",
+                "\thideIcon=\"${8|false,true|}\">",
+                "\t<el-button slot=\"reference\">$9</el-button>",
+            "</el-popconfirm>",
+            "${10}"
+        ],
+        "description": "Element UI <el-popconfirm>"
+    },
+
     "Others: Card": {
         "prefix": "elcard",
         "body": [
-            "<el-card :body-style=\"${1:{ padding: '0px' }}\">",
+            "<el-card shadow=\"${1|always,hover,never|}\" :body-style=\"${2:{ padding: '20px' }}\">",
                 "\t<div slot=\"header\">",
-                    "\t\t<span>${2:<!-- card title -->}</span>",
+                    "\t\t<span>${3:<!-- card title -->}</span>",
                 "\t</div>",
-                "\t${3:<!-- card body -->}",
+                "\t${4:<!-- card body -->}",
             "</el-card>",
-            "${4}"
+            "${5}"
         ],
         "description": "Element UI <el-card>"
     },
@@ -1090,12 +1116,14 @@
     "Others: Carousel": {
         "prefix": "elcaro",
         "body": [
-            "<el-carousel trigger=\"${1:hover}\" height=\"${2:150px}\">",
-                "\t<el-carousel-item v-for=\"${3:item} in ${4:items}\" :key=\"${3:item}.${5:key}\">",
-                    "\t\t${6:<!-- content -->}",
+            "<el-carousel height=\"${1:150px}\" type=\"${2|default,card|}\" direction=\"${3|horizontal,vertical|}\"",
+                "\t:initial-index=\"${4:0}\" :autoplay=\"${5|true, false|}\" :interval=\"${6:3000}\" :loop=\"${7|true,false|}\"",
+                "\ttrigger=\"${8|hover,click|}\" indicator-position=\"${9|outside,inside,none|}\" arrow=\"${10|hover,always,never|}\">",
+                "\t<el-carousel-item v-for=\"${11:item} in ${12:items}\" :key=\"${11:item}.${13:key}\" :label=\"${14}\">",
+                    "\t\t${15:<!-- content -->}",
                 "\t</el-carousel-item>",
             "</el-carousel>",
-            "${7}"
+            "${16}"
         ],
         "description": "Element UI <el-carousel> with <el-carousel-item>"
     },
@@ -1103,10 +1131,10 @@
     "Others: Carousel Item": {
         "prefix": "elcaroi",
         "body": [
-            "<el-carousel-item>",
-                "\t${1:<!-- content -->}",
+            "<el-carousel-item :label=\"${1}\">",
+                "\t${2:<!-- content -->}",
             "</el-carousel-item>",
-            "${2}"
+            "${3}"
         ],
         "description": "Element UI <el-carousel-item>"
     },
@@ -1136,5 +1164,97 @@
             "${4}"
         ],
         "description": "Element UI <el-collapse-item>"
-    }
+    },
+
+    "Others: Collapse Timeline": {
+        "prefix": "elti",
+        "body": [
+            "<el-timeline :reverse=\"$1\">",
+                "\t<el-timeline-item v-for=\"${2:item} in ${3:items}\"",
+                    "\t\t:key=\"${2:item}.${4:id}\"",
+                    "\t\t:timestamp=\"${2:item}.${5:timestamp}\"",
+                    "\t\tplacement=\"${6|top,bottom|}\"",
+                    "\t\ttype=\"${7|primary,success,warning,danger,info|}\"",
+                    "\t\tsize=\"${8|normal,large|}\">",
+                    "\t\t${9:<!-- content -->}",
+                "\t</el-timeline-item>",
+            "</el-timeline>",
+            "${10}"
+        ],
+        "description": "Element UI <el-timeline> with <el-timeline-item>"
+    },
+    
+    "Others: Collapse Timeline Item": {
+        "prefix": "eltii",
+        "body": [
+            "<el-timeline-item",
+                "\ttimestamp=\"${1}\"",
+                "\tplacement=\"${2|top,bottom|}\"",
+                "\ttype=\"${3|primary,success,warning,danger,info|}\"",
+                "\tsize=\"${4|normal,large|}\">",
+                "\t${5:<!-- content -->}",
+            "</el-timeline-item>",
+            "${6}"
+        ],
+        "description": "Element UI <el-timeline-item>"
+    },
+
+    "Others: Divider": {
+        "prefix": "eld",
+        "body": [
+            "<el-divider direction=\"${1|horizontal,vertical|}\" content-position=\"${2|left,right,center|}\">$3</el-divider>",
+            "${4}"
+        ],
+        "description": "Element UI <el-divider>"
+    },
+
+    "Others: Calendar": {
+        "prefix": "elcal",
+        "body": [
+            "<el-calendar v-model=\"${1}\" :first-day-of-week=\"${2:1}\"></el-calendar>",
+            "${3}"
+        ],
+        "description": "Element UI <el-calendar>"
+    },
+
+    "Others: Image": {
+        "prefix": "elim",
+        "body": [
+            "<el-image :src=\"${1}\" fit=\"${2|fill,contain,cover,none,scale-down|}\" :lazy=\"${3|true,false|}\"></el-image>",
+            "${4}"
+        ],
+        "description": "Element UI <el-image>"
+    },
+
+    "Others: Backtop": {
+        "prefix": "elback",
+        "body": [
+            "<el-backtop :target=\"${1}\" :right=\"${2:40}\" :bottom=\"${3:40}\">$4</el-backtop>",
+            "${5}"
+        ],
+        "description": "Element UI <el-backtop>"
+    },
+
+    "Others: InfiniteScroll": {
+        "prefix": "elinfi",
+        "body": [
+            "v-infinite-scroll=\"${1}\"",
+            ":infinite-scroll-delay=\"${2}\"",
+            ":infinite-scroll-distance=\"${3}\"",
+            ":infinite-scroll-disabled=\"${4|false,true|}\"",
+            ":infinite-scroll-immediate=\"${5|true,false|}\"",
+        ],
+        "description": "Element UI v-infinite-scroll"
+    },
+
+    "Others: Drawer": {
+        "prefix": "eldra",
+        "body": [
+            "<el-drawer title=\"${1}\" :visible.sync=\"${2}\" direction=\"${3|rtl,ltr,ttb,btt|}\" size=\"${4:30%}\"",
+                "\t:before-close=\"${5}\" :destroy-on-close=\"${6|true,false|}\" :show-close=\"${7|true,false|}\" :wrapperClosable=\"${8|true,false|}\">",
+            "</el-drawer>",
+            "${9}"
+        ],
+        "description": "Element UI <el-drawer>"
+    },
 }

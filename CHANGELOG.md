@@ -20,3 +20,11 @@
 - update 7 snippets in Notice part for Element UI of version 2.13.2
 - add 1 new snippets for Notice part for Element UI of version 2.13.2
 - change the shortcut to `elno` for `$notify`
+
+#### 2020-10-08
+
+- update 7 snippets of Navigation part for version 2.13.2
+- add 1 new snippets of Navigation part for version 2.13.2
+- update 6 snippets of Others part for version 2.13.2
+- add 9 new snippets of Others part for version 2.13.2
+- change the shortcut to `elpo` for `<el-popover>`

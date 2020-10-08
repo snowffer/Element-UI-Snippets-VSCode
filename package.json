@@ -1,7 +1,7 @@
 {
     "name": "element-ui-snippets",
     "displayName": "Element UI Snippets",
-    "version": "0.6.0",
+    "version": "0.7.0",
     "publisher": "SS",
     "description": "Code snippets for Element-UI which is a Vue.js 2.0 UI Toolkit for Web",
     "author": {

@@ -3,6 +3,7 @@
 ### Install
 
 #### Manual Install
+
 Go to the [git](https://github.com/snowffer/Element-UI-Snippets-VSCode) and download the snippets folder, then copy the files in the folder to the path directly:
 
 + **Mac**: /Users/*< your-user-name >*/Library/Application Support/Code/User/snippets/
@@ -13,7 +14,7 @@ Go to the [git](https://github.com/snowffer/Element-UI-Snippets-VSCode) and down
 + From website: Go to Visual Studio Code [Marketplace](https://marketplace.visualstudio.com/vscode), and search 'Element UI Snippets', then click the install button.
 + From VS Code: click extensions sidebar, and search 'Element UI Snippets', then click the install button.
 
-### Special Instruction：
+### Special Instruction
 
 1. For the components like `el-table` which need children components to be its content, use `v-for` to loop to generate the children components.
 
@@ -21,7 +22,7 @@ Go to the [git](https://github.com/snowffer/Element-UI-Snippets-VSCode) and down
 
 1. All the Element UI tags below, ignore the closure and more detailed information. Such as `elr` to `<el-radio>`, actually that represents `<el-radio v-model="${1}" label="${2}">$3</el-radio>`
 2. The sinppets' order follows the order of the components of Guide on Element UI official website basically. <!--Supply extra General and Options parts.-->
-3. Totally 71 snippets. Will add more if necessary.
+3. Totally 108 snippets. Will add more if necessary.
 4. **Only work in .vue file for now.**
 
 #### Basic Part
@@ -134,10 +135,11 @@ Go to the [git](https://github.com/snowffer/Element-UI-Snippets-VSCode) and down
 |5. | `eltabp` | `<el-tab-pane>` |
 |6. | `elbr` | `<el-breadcrumb>` |
 |7. | `elbri` | `<el-breadcrumb-item>` |
-|8. | `eldr` | `<el-dropdown>` |
-|9. | `eldri` | `<el-dropdown-item>` |
-|10. | `elsts` | `<el-steps>` |
-|11. | `elst` | `<el-step>` |
+|8. | `elpa` | `<el-page-header>` |
+|9. | `eldr` | `<el-dropdown>` |
+|10. | `eldri` | `<el-dropdown-item>` |
+|11. | `elsts` | `<el-steps>` |
+|12. | `elst` | `<el-step>` |
 
 #### Others Part
 
@@ -145,12 +147,21 @@ Go to the [git](https://github.com/snowffer/Element-UI-Snippets-VSCode) and down
 |:------:|:--------------:|:--------|
 |1. | `eldi` | `<el-dialog>` |
 |2. | `elto` | `<el-tooltip>` |
-|3. | `elpop` | `<el-popover>` |
-|4. | `elcard` | `<el-card>` |
-|5. | `elcaro` | `<el-carousel>` |
-|6. | `elcaroi` | `<el-carousel-item>` |
-|7. | `elcolla` | `<el-collapse>` |
-|8. | `elcollai` | `<el-collapse-item>` |
+|3. | `elpo` | `<el-popover>` |
+|4. | `elpoco` | `<el-popconfirm>` |
+|5. | `elcard` | `<el-card>` |
+|6. | `elcaro` | `<el-carousel>` |
+|7. | `elcaroi` | `<el-carousel-item>` |
+|8. | `elcolla` | `<el-collapse>` |
+|9. | `elcollai` | `<el-collapse-item>` |
+|10. | `elti` | `<el-timeline>` |
+|11. | `eltii` | `<el-timeline-item>` |
+|12. | `eld` | `<el-divider>` |
+|13. | `elcal` | `<el-calendar>` |
+|14. | `elim` | `<el-image>` |
+|15. | `elback` | `<el-backtop>` |
+|16. | `elinfi` | `v-infinite-scroll` |
+|17. | `eldra` | `<el-drawer>` |
 
 <!--
 #### General Part
